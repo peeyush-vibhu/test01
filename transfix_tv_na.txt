@@ -1,0 +1,395 @@
+
+transfix_tv_na
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+dcli -C groupadd -g 9724 BIGG-A-TTNXXX-DA
+dcli -C groupadd -g 9725 BIGG-A-TTNXXX-DR
+dcli -C groupadd -g 9726 BIGG-A-TTNXXX-UA
+dcli -C groupadd -g 9727 BIGG-A-TTNXXX-UR
+dcli -C groupadd -g 9728 BIGG-A-TTNXXX-PA
+dcli -C groupadd -g 9729 BIGG-A-TTNXXX-PR
+
+
+hadoop fs -mkdir /application/dev/transfix_tv_na
+hadoop fs -mkdir /application/dev/transfix_tv_na/oozie
+hadoop fs -mkdir /application/dev/transfix_tv_na/sqoop
+hadoop fs -mkdir /application/dev/transfix_tv_na/hive
+hadoop fs -mkdir /application/dev/transfix_tv_na/shell
+hadoop fs -mkdir /application/dev/transfix_tv_na/pig
+hadoop fs -mkdir /application/dev/transfix_tv_na/install_script
+hadoop fs -mkdir /application/dev/transfix_tv_na/lib_jar
+hadoop fs -mkdir /application/dev/transfix_tv_na/doc 
+
+hadoop fs -mkdir /application/uat/transfix_tv_na
+hadoop fs -mkdir /application/uat/transfix_tv_na/oozie
+hadoop fs -mkdir /application/uat/transfix_tv_na/sqoop
+hadoop fs -mkdir /application/uat/transfix_tv_na/hive
+hadoop fs -mkdir /application/uat/transfix_tv_na/shell
+hadoop fs -mkdir /application/uat/transfix_tv_na/pig
+hadoop fs -mkdir /application/uat/transfix_tv_na/install_script
+hadoop fs -mkdir /application/uat/transfix_tv_na/lib_jar 
+hadoop fs -mkdir /application/uat/transfix_tv_na/doc 
+
+hadoop fs -mkdir /application/prod/transfix_tv_na
+hadoop fs -mkdir /application/prod/transfix_tv_na/oozie
+hadoop fs -mkdir /application/prod/transfix_tv_na/sqoop
+hadoop fs -mkdir /application/prod/transfix_tv_na/hive
+hadoop fs -mkdir /application/prod/transfix_tv_na/shell
+hadoop fs -mkdir /application/prod/transfix_tv_na/pig
+hadoop fs -mkdir /application/prod/transfix_tv_na/install_script
+hadoop fs -mkdir /application/prod/transfix_tv_na/lib_jar 
+hadoop fs -mkdir /application/prod/transfix_tv_na/doc 
+
+
+
+hadoop fs -mkdir /application_data/dev/transfix_tv_na
+hadoop fs -mkdir /application_data/dev/transfix_tv_na/staging
+hadoop fs -mkdir /application_data/dev/transfix_tv_na/archive
+hadoop fs -mkdir /application_data/dev/transfix_tv_na/input
+hadoop fs -mkdir /application_data/dev/transfix_tv_na/final
+
+hadoop fs -mkdir /application_data/uat/transfix_tv_na
+hadoop fs -mkdir /application_data/uat/transfix_tv_na/staging
+hadoop fs -mkdir /application_data/uat/transfix_tv_na/archive
+hadoop fs -mkdir /application_data/uat/transfix_tv_na/input
+hadoop fs -mkdir /application_data/uat/transfix_tv_na/final
+
+hadoop fs -mkdir /application_data/prod/transfix_tv_na
+hadoop fs -mkdir /application_data/prod/transfix_tv_na/staging
+hadoop fs -mkdir /application_data/prod/transfix_tv_na/archive
+hadoop fs -mkdir /application_data/prod/transfix_tv_na/input
+hadoop fs -mkdir /application_data/prod/transfix_tv_na/final
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+hadoop fs -chmod -R 770 /application/dev/transfix_tv_na
+hadoop fs -chmod 750 /application/dev/transfix_tv_na
+hadoop fs -chown -R hive:hive /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DA:rwx,other::--- /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DA:rwx,default:other::--- /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DR:r-x,other::--- /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DR:r-x,default:other::--- /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application/dev/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application/dev/transfix_tv_na
+hadoop fs -getfacl /application/dev/transfix_tv_na	
+	
+	
+	
+############################################copy after this######################################	
+
+
+hadoop fs -chmod -R 770 /application/uat/transfix_tv_na
+hadoop fs -chmod 750 /application/uat/transfix_tv_na
+hadoop fs -chown -R hive:hive /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UA:rwx,other::--- /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UA:rwx,default:other::--- /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UR:r-x,other::--- /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UR:r-x,default:other::--- /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application/uat/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application/uat/transfix_tv_na
+hadoop fs -getfacl /application/uat/transfix_tv_na	
+
+
+hadoop fs -chmod -R 770 /application/prod/transfix_tv_na
+hadoop fs -chmod 750 /application/prod/transfix_tv_na
+hadoop fs -chown -R hive:hive /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PA:rwx,other::--- /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PA:rwx,default:other::--- /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PR:r-x,other::--- /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PR:r-x,default:other::--- /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application/prod/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application/prod/transfix_tv_na
+hadoop fs -getfacl /application/prod/transfix_tv_na	
+
+
+
+
+hadoop fs -chmod -R 770 /application_data/dev/transfix_tv_na
+hadoop fs -chmod 750 /application_data/dev/transfix_tv_na
+hadoop fs -chown -R hive:hive /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DA:rwx,other::--- /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DA:rwx,default:other::--- /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DR:r-x,other::--- /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DR:r-x,default:other::--- /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application_data/dev/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application_data/dev/transfix_tv_na
+hadoop fs -getfacl /application_data/dev/transfix_tv_na	
+	
+	
+hadoop fs -chmod -R 770 /application_data/uat/transfix_tv_na
+hadoop fs -chmod 750 /application_data/uat/transfix_tv_na
+hadoop fs -chown -R hive:hive /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UA:rwx,other::--- /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UA:rwx,default:other::--- /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UR:r-x,other::--- /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UR:r-x,default:other::--- /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application_data/uat/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application_data/uat/transfix_tv_na
+hadoop fs -getfacl /application_data/uat/transfix_tv_na
+
+
+hadoop fs -chmod -R 770 /application_data/prod/transfix_tv_na
+hadoop fs -chmod 750 /application_data/prod/transfix_tv_na
+hadoop fs -chown -R hive:hive /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PA:rwx,other::--- /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PA:rwx,default:other::--- /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PR:r-x,other::--- /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PR:r-x,default:other::--- /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R  mask::rwx /application_data/prod/transfix_tv_na
+hadoop fs -setfacl -m -R  default:mask::rwx /application_data/prod/transfix_tv_na
+hadoop fs -getfacl /application_data/prod/transfix_tv_na	
+
+
+##################################################
+
+
+
+!connect jdbc:hive2://sda1node04.na.pg.com:10000/default;principal=hive/_HOST@POCCLUSTER.NA.PG.COM
+
+!connect jdbc:hive2://cfclbv0076.us2.oraclecloud.com:10000/default;principal=hive/_HOST@BDACLOUDSERVICE.ORACLE.COM
+ 
+CREATE DATABASE ad_transfix_tv_na;
+CREATE DATABASE au_transfix_tv_na;
+CREATE DATABASE ap_transfix_tv_na;
+
+CREATE ROLE `a-ttnxxx-da`;
+CREATE ROLE `a-ttnxxx-dr`;
+CREATE ROLE `a-ttnxxx-ua`;
+CREATE ROLE `a-ttnxxx-ur`;
+CREATE ROLE `a-ttnxxx-pa`;
+CREATE ROLE `a-ttnxxx-pr`;
+
+GRANT ALL ON DATABASE ad_transfix_tv_na TO ROLE `a-ttnxxx-da` WITH GRANT OPTION;
+GRANT SELECT ON DATABASE ad_transfix_tv_na TO ROLE `a-ttnxxx-dr` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application/dev/transfix_tv_na' TO ROLE `a-ttnxxx-da` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application_data/dev/transfix_tv_na' TO ROLE `a-ttnxxx-da` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application/dev/transfix_tv_na' TO ROLE `a-ttnxxx-dr` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application_data/dev/transfix_tv_na' TO ROLE `a-ttnxxx-dr` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db' TO ROLE `a-ttnxxx-da` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db' TO ROLE `a-ttnxxx-dr` WITH GRANT OPTION;
+GRANT ROLE `a-ttnxxx-da` TO GROUP `BIGG-A-TTNXXX-DA`;
+GRANT ROLE `a-ttnxxx-dr` TO GROUP `BIGG-A-TTNXXX-DR`;
+SHOW GRANT ROLE `a-ttnxxx-da`;
+SHOW GRANT ROLE `a-ttnxxx-dr`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-DA`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-DR`;
+
+
+GRANT ALL ON DATABASE au_transfix_tv_na TO ROLE `a-ttnxxx-ua` WITH GRANT OPTION;
+GRANT SELECT ON DATABASE au_transfix_tv_na TO ROLE `a-ttnxxx-ur` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application/uat/transfix_tv_na' TO ROLE `a-ttnxxx-ua` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application_data/uat/transfix_tv_na' TO ROLE `a-ttnxxx-ua` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application/uat/transfix_tv_na' TO ROLE `a-ttnxxx-ur` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application_data/uat/transfix_tv_na' TO ROLE `a-ttnxxx-ur` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db' TO ROLE `a-ttnxxx-ua` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db' TO ROLE `a-ttnxxx-ur` WITH GRANT OPTION;
+GRANT ROLE `a-ttnxxx-ua` TO GROUP `BIGG-A-TTNXXX-UA`;
+GRANT ROLE `a-ttnxxx-ur` TO GROUP `BIGG-A-TTNXXX-UR`;
+SHOW GRANT ROLE `a-ttnxxx-ua`;
+SHOW GRANT ROLE `a-ttnxxx-ur`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-UA`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-UR`;
+
+
+GRANT ALL ON DATABASE ap_transfix_tv_na TO ROLE `a-ttnxxx-pa` WITH GRANT OPTION;
+GRANT SELECT ON DATABASE ap_transfix_tv_na TO ROLE `a-ttnxxx-pr` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application/prod/transfix_tv_na' TO ROLE `a-ttnxxx-pa` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/application_data/prod/transfix_tv_na' TO ROLE `a-ttnxxx-pa` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application/prod/transfix_tv_na' TO ROLE `a-ttnxxx-pr` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/application_data/prod/transfix_tv_na' TO ROLE `a-ttnxxx-pr` WITH GRANT OPTION;
+GRANT ALL ON URI 'hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db' TO ROLE `a-ttnxxx-pa` WITH GRANT OPTION;
+GRANT SELECT ON URI 'hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db' TO ROLE `a-ttnxxx-pr` WITH GRANT OPTION;
+GRANT ROLE `a-ttnxxx-pa` TO GROUP `BIGG-A-TTNXXX-PA`;
+GRANT ROLE `a-ttnxxx-pr` TO GROUP `BIGG-A-TTNXXX-PR`;
+SHOW GRANT ROLE `a-ttnxxx-pa`;
+SHOW GRANT ROLE `a-ttnxxx-pr`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-PA`;
+SHOW ROLE GRANT GROUP `BIGG-A-TTNXXX-PR`;
+
+
+hadoop fs -chmod -R 770 hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -chown -R hive:hive hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DA:rwx,other::--- hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DA:rwx,default:other::--- hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DR:r-x,other::--- hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DR:r-x,default:other::--- hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+hadoop fs -getfacl hdfs://sda-ns/user/hive/warehouse/ad_transfix_tv_na.db
+
+hadoop fs -chmod -R 770 hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -chown -R hive:hive hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UA:rwx,other::--- hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UA:rwx,default:other::--- hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UR:r-x,other::--- hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UR:r-x,default:other::--- hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+hadoop fs -getfacl hdfs://sda-ns/user/hive/warehouse/au_transfix_tv_na.db
+ 
+hadoop fs -chmod -R 770 hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -chown -R hive:hive hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PA:rwx,other::--- hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PA:rwx,default:other::--- hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PR:r-x,other::--- hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PR:r-x,default:other::--- hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+hadoop fs -getfacl hdfs://sda-ns/user/hive/warehouse/ap_transfix_tv_na.db
+
+
+
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA minson.mw 
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA szpot.l 
+dcli -C usermod -a -G BIGG-A-TTNXXX-PA minson.mw
+dcli -C usermod -a -G BIGG-A-TTNXXX-PA szpot.l 
+dcli -C usermod -a -G BIGG-A-TTNXXX-UA minson.mw
+dcli -C usermod -a -G BIGG-A-TTNXXX-UA szpot.l 
+
+ 
+
+
+
+
+
+
+
+
+
+@@@@@@@@@@@@@local-EDGE@@@@@@@@@@@@@@@
+
+groupadd -g 9711 BIGG-A-TTNXXX-DA
+groupadd -g 9712 BIGG-A-TTNXXX-DR
+groupadd -g 9713 BIGG-A-TTNXXX-UA
+groupadd -g 9714 BIGG-A-TTNXXX-UR
+groupadd -g 9715 BIGG-A-TTNXXX-PA
+groupadd -g 9716 BIGG-A-TTNXXX-PR
+
+mkdir /application/dev/transfix_tv_na
+mkdir /application/dev/transfix_tv_na/oozie
+mkdir /application/dev/transfix_tv_na/sqoop
+mkdir /application/dev/transfix_tv_na/hive
+mkdir /application/dev/transfix_tv_na/shell		
+mkdir /application/dev/transfix_tv_na/pig	
+mkdir /application/dev/transfix_tv_na/install_script	
+mkdir /application/dev/transfix_tv_na/lib_jar	
+mkdir /application/dev/transfix_tv_na/doc 	
+	
+mkdir /application/uat/transfix_tv_na
+mkdir /application/uat/transfix_tv_na/oozie
+mkdir /application/uat/transfix_tv_na/sqoop
+mkdir /application/uat/transfix_tv_na/hive
+mkdir /application/uat/transfix_tv_na/shell
+mkdir /application/uat/transfix_tv_na/pig
+mkdir /application/uat/transfix_tv_na/install_script
+mkdir /application/uat/transfix_tv_na/lib_jar 
+mkdir /application/uat/transfix_tv_na/doc 
+
+mkdir /application/prod/transfix_tv_na
+mkdir /application/prod/transfix_tv_na/oozie
+mkdir /application/prod/transfix_tv_na/sqoop
+mkdir /application/prod/transfix_tv_na/hive
+mkdir /application/prod/transfix_tv_na/shell
+mkdir /application/prod/transfix_tv_na/pig
+mkdir /application/prod/transfix_tv_na/install_script
+mkdir /application/prod/transfix_tv_na/lib_jar 
+mkdir /application/prod/transfix_tv_na/doc 
+
+
+
+
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-DA:rwx,other::--- /application/dev/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DA:rwx,default:other::--- /application/dev/transfix_tv_na
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-DR:r-x,other::--- /application/dev/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DR:r-x,default:other::--- /application/dev/transfix_tv_na
+setfacl -R -m  mask::rwx /application/dev/transfix_tv_na
+setfacl -R -m  default:mask::rwx /application/dev/transfix_tv_na
+getfacl /application/dev/transfix_tv_na
+
+
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-UA:rwx,other::--- /application/uat/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UA:rwx,default:other::--- /application/uat/transfix_tv_na
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-UR:r-x,other::--- /application/uat/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UR:r-x,default:other::--- /application/uat/transfix_tv_na
+setfacl -R -m  mask::rwx /application/uat/transfix_tv_na
+setfacl -R -m  default:mask::rwx /application/uat/transfix_tv_na
+getfacl /application/uat/transfix_tv_na	
+
+
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-PA:rwx,other::--- /application/prod/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PA:rwx,default:other::--- /application/prod/transfix_tv_na
+setfacl -R -m user:hive:rwx,group:BIGG-A-TTNXXX-PR:r-x,other::--- /application/prod/transfix_tv_na
+setfacl -R -m default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PR:r-x,default:other::--- /application/prod/transfix_tv_na
+setfacl -R -m  mask::rwx /application/prod/transfix_tv_na
+setfacl -R -m  default:mask::rwx /application/prod/transfix_tv_na
+getfacl /application/prod/transfix_tv_na
+
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA goralewski.ag 
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA bladek.e  
+dcli -C usermod -a -G BIGG-A-TTNXXX-PA goralewski.ag
+dcli -C usermod -a -G BIGG-A-TTNXXX-PA bladek.e 
+dcli -C usermod -a -G BIGG-A-TTNXXX-UA goralewski.ag 
+dcli -C usermod -a -G BIGG-A-TTNXXX-UA bladek.e
+
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA trojak.r
+dcli -C usermod -a -G BIGG-A-TTNXXX-DA trojak.r
+dcli -C usermod -a -G BIGG-A-TTNXXX-UA trojak.r 
+
+svnadmin create /opt/svn/repos/transfix_tv_na
+chown -R bdapache:bdapache /opt/svn/repos/transfix_tv_na
+
+vi /opt/svn/access/svn-access
+
+[transfix_tv_na]
+user names
+
+after this is done 
+go to hosted inventory
+click on new
+fill details
+go to big data documents-opertions-apllication operation-make a folder with name as application-upload file
+upload file and make tinyurl out of it 
+go to application folder
+copy link location and paste it in sharepoint 
+	
+
+
+
+/////////////////////ignore below lines as of now///////////////////////////////////////////////////////////////////////////////////////////////////////////
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DA:rwx,other::--- /application_data/dev/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DA:rwx,default:other::--- /application_data/dev/transfix_tv_na
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-DR:r-x,other::--- /application_data/dev/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-DR:r-x,default:other::--- /application_data/dev/transfix_tv_na
+setfacl -m -R  mask::rwx /application_data/dev/transfix_tv_nasetfacl -m -R  default:mask::rwx /application_data/dev/transfix_tv_na
+getfacl /application_data/dev/transfix_tv_na	
+	
+	
+
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UA:rwx,other::--- /application_data/uat/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UA:rwx,default:other::--- /application_data/uat/transfix_tv_na
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-UR:r-x,other::--- /application_data/uat/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-UR:r-x,default:other::--- /application_data/uat/transfix_tv_na
+setfacl -m -R  mask::rwx /application_data/uat/transfix_tv_na
+setfacl -m -R  default:mask::rwx /application_data/uat/transfix_tv_na
+getfacl /application_data/uat/transfix_tv_na
+
+
+
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PA:rwx,other::--- /application_data/prod/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PA:rwx,default:other::--- /application_data/prod/transfix_tv_na
+setfacl -m -R user:hive:rwx,group:BIGG-A-TTNXXX-PR:r-x,other::--- /application_data/prod/transfix_tv_na
+setfacl -m -R default:user:hive:rwx,default:group:BIGG-A-TTNXXX-PR:r-x,default:other::--- /application_data/prod/transfix_tv_na
+setfacl -m -R  mask::rwx /application_data/prod/transfix_tv_na
+setfacl -m -R  default:mask::rwx /application_data/prod/transfix_tv_na
+getfacl /application_data/prod/transfix_tv_na	
+
+
+
+	
+
+
+
+
+
+	
+
+
+
+
